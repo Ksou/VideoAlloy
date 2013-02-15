@@ -1,3 +1,23 @@
 ".container": {
 	backgroundColor: "white"
+},
+"#NiceRow" :{
+height : '80dp',
+
+
+backgroundColor : 'gray'	
+
+	
+}, 
+"#Title":{
+right : '30dp',
+left : '30dp'	
+	
+}
+
+"#PlayButton":{
+	
+right : '3dp',
+color : 'blue'
+	
 }

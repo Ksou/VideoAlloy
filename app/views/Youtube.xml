@@ -1,5 +1,6 @@
 <Alloy>
 	<Window id = 'WinMain' onOpen = 'PreLoad'>
+	<Button id = 'Close'  visible = 'false' title = 'Close' />
 		<TableView id = 'MainTable'/>
 	</Window>
 </Alloy>

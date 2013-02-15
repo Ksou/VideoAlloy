@@ -1,10 +1,18 @@
 function Controller() {
+    function GlobalLoad() {
+        PreLoad();
+    }
     function PreLoad() {
-        YoutubeJson("DJ Krush", ModelStore);
+        Alloy.Globals.GlobalLoad = function() {
+            GlobalLoad;
+        };
+        var LocSearch = Alloy.Globals.SearchString;
+        Alloy.Globals.LastSearch = LocSearch;
+        alert(LocSearch);
+        YoutubeJson(LocSearch, ModelStore);
     }
     function ModelStore(dat) {
         var data = dat.items;
-        debugger;
         Ti.API.log(data[1].title);
         for (var x in data) {
             var Video = Alloy.createModel("Youtube", {
@@ -25,10 +33,7 @@ function Controller() {
             var arg = {
                 Model: Alloy.Collections.Youtube.models[x].attributes,
                 Window: $.WinMain
-            };
-            debugger;
-            var Row = Alloy.createController("NiceRow", arg).getView();
-            debugger;
+            }, Row = Alloy.createController("NiceRow", arg).getView();
             TableRows.push(Row);
         }
         $.MainTable.setData(TableRows);
@@ -52,12 +57,19 @@ function Controller() {
     }), "Window", null);
     $.addTopLevelView($.__views.WinMain);
     PreLoad ? $.__views.WinMain.on("open", PreLoad) : __defers["$.__views.WinMain!open!PreLoad"] = !0;
+    $.__views.Close = A$(Ti.UI.createButton({
+        id: "Close",
+        visible: "false",
+        title: "Close"
+    }), "Button", $.__views.WinMain);
+    $.__views.WinMain.add($.__views.Close);
     $.__views.MainTable = A$(Ti.UI.createTableView({
         id: "MainTable"
     }), "TableView", $.__views.WinMain);
     $.__views.WinMain.add($.__views.MainTable);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    Alloy.Globals.Close = $.Close;
     __defers["$.__views.WinMain!open!PreLoad"] && $.__views.WinMain.on("open", PreLoad);
     _.extend($, exports);
 }

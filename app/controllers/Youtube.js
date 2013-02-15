@@ -1,12 +1,32 @@
+Alloy.Globals.Close = $.Close;
+function GlobalLoad (){
+	
+PreLoad() ; 	
+}
+
 function PreLoad() {
+	
+	Alloy.Globals.GlobalLoad = 
+	function(){
+	GlobalLoad ;
+	}
+	
 	//Alloy.Gloabls.MainWin = $.WinMain ;
 	// gets all the JSON DATA( don't think youtube has a rest API)
 	// YoutubeJson = require('app/controllers/YoutubeJson');
-	YoutubeJson('DJ Krush', ModelStore);
+var LocSearch = Alloy.Globals.SearchString;
+//	if (Alloy.Globals.SearchString ==!Alloy.Globals.LastSearch) {
+	//	var LocSearch = Alloy.Globals.SearchString;
+		Alloy.Globals.LastSearch = LocSearch;
+		alert(LocSearch) ; 
+		YoutubeJson(LocSearch, ModelStore);
+
+	//}
+
 }
 
 function ModelStore(dat) {
-	var data = dat.items; debugger ;
+	var data = dat.items; //debugger ;
 	//	alert(data[1].title) ;
 	// stores JSON as models and then  creates nice table rows and adds them to the table
 	Ti.API.log(data[1].title);
@@ -49,9 +69,9 @@ function FillTable() {
 		var arg = {
 			Model : Alloy.Collections.Youtube.models[x].attributes,
 			Window : $.WinMain
-		}; debugger ;
+		}; //debugger ;
 		// pass all the data we need into NiceRow when we create it
-		var Row = Alloy.createController('NiceRow', arg).getView(); debugger ;
+		var Row = Alloy.createController('NiceRow', arg).getView(); // debugger ;
 		// Row.NiceRow() ;
 		TableRows.push(Row);
 	}

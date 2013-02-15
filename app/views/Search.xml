@@ -1,0 +1,7 @@
+<Alloy>
+	<Window id = 'Win'  >
+		<Label top = '120dp' >Search here</Label>
+		<TextField id = 'SearchMe' hintText = 'Search'  />
+		<Button id = 'ButtonA' onClick = 'Search' bottom ='50dp'>
+	</Window>
+</Alloy>

@@ -1,39 +1,39 @@
 exports.definition = {
-	
-	config: {
-		"columns": {
-			"Name":"string",
-			"Duration":"string",
-			"ImageURL":"string",
-			"VideoURL":"string",
+
+	config : {
+		"columns" : {
+			"Name" : "string",
+			"Duration" : "string",
+			"ImageURL" : "string",
+			"VideoURL" : "string",
 			'VidID' : "string",
 		},
-		"adapter": {
-			"type": "sql",
-			"collection_name": "Youtube"
+		"adapter" : {
+			"type" : "sql",
+			"collection_name" : "Youtube"
 		}
-	},		
+	},
 
-	extendModel: function(Model) {		
+	extendModel : function(Model) {
 		_.extend(Model.prototype, {
-						
+
 			// extended functions go here
 
-		}); // end extend
-		
+		});
+		// end extend
+
 		return Model;
 	},
-	
-	
-	extendCollection: function(Collection) {		
+
+	extendCollection : function(Collection) {
 		_.extend(Collection.prototype, {
-			
-			// extended functions go here			
-			
-		}); // end extend
-		
+
+			// extended functions go here
+
+		});
+		// end extend
+
 		return Collection;
 	}
-		
 }
 
