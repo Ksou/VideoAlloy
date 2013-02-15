@@ -1,0 +1,5 @@
+<Alloy>
+	<Window id = 'WinMain' onOpen = 'PreLoad'>
+		<TableView id = 'MainTable'/>
+	</Window>
+</Alloy>
