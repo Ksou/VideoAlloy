@@ -8,7 +8,7 @@ exports.definition = {
 			"VideoURL" : "string",
 			"VidID" : "string",
 			//"HQimage" : "string",
-		// can't add collum !
+			// can't add collum !
 		},
 		"adapter" : {
 			"type" : "sql",

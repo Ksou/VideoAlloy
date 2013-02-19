@@ -1,9 +1,6 @@
-".container": {
-	backgroundColor: "white"
+".container": { backgroundColor:"white"
 },
-"CoverFlowView" :{
-	
-height : '300dp',
-width : '300dp' , 	
-	
+"CoverFlowView" : { height : '300dp',
+	width : '300dp' ,
+
 }

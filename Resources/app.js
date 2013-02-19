@@ -4,8 +4,6 @@ Alloy.Collections.Youtube = Alloy.createCollection("Youtube");
 
 Alloy.Globals.Close = null;
 
-Alloy.Globals.LastSearch = null;
-
 Alloy.Globals.GlobalLoad = function() {};
 
 Alloy.Globals.CoverUpdate = function() {};
