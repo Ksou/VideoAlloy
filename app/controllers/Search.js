@@ -1,10 +1,9 @@
 function Search() {
 	// grad the search string and run it though to the search function , GlobalLoad/PreLoad
 
-		//if()
+	//if()
 
-	var SearchString = $.SearchMe.value;
-	debugger ;
+	var SearchString = $.SearchMe.value; debugger ;
 	Alloy.Globals.GlobalLoad(SearchString)
 	//Alloy.Globals.GlobalLoad ;
 	//debugger ;

@@ -9,7 +9,8 @@ function YoutubeJson(search, callback) {
 	xhr.send();
 	xhr.onload = function(e) {
 
-		Ti.API.log(this.responseText); debugger ;
+		Ti.API.log(this.responseText);
+		debugger ;
 		var Json = JSON.parse(this.responseText);
 
 		callback(Json);

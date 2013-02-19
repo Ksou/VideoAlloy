@@ -1,20 +1,15 @@
 <Alloy>
-    <Window id="window" title = ' Cover Flow '>
-    	<Button id = 'Close'  visible = 'false' title = 'Close' />
-        <CoverFlowView id="CoverFlow" platform="ios" backgroundColor="#000">
+	<Window id="window" title = ' Cover Flow '>
+		<Button id = 'Close'  visible = 'false' title = 'Close' />
+		<CoverFlowView id="CoverFlow" platform="ios" backgroundColor="#000">
 
-            <!-- The Images tag sets the CoverFlowView.images property. -->
-            
+			<!-- The Images tag sets the CoverFlowView.images property. -->
 
-                <!-- Assign the image by node text or the image attribute. -->
-                <!-- Can also specify the width and height attributes. -->
+			<!-- Assign the image by node text or the image attribute. -->
+			<!-- Can also specify the width and height attributes. -->
 
-               
+			<!-- Place additional views for the CoverFlowView here. -->
 
-          
-
-            <!-- Place additional views for the CoverFlowView here. -->
-
-        </CoverFlowView>
-    </Window>
+		</CoverFlowView>
+	</Window>
 </Alloy>
