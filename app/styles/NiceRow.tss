@@ -5,12 +5,13 @@
 height : '80dp',
 
 
-backgroundColor : 'gray'	
+backgroundColor : '#e6e6e6', 	
+borderRadius :'3'
 
 	
 }, 
 "#Title":{
-right : '30dp',
+right : '125dp',
 left : '30dp'	
 	
 }
@@ -18,6 +19,10 @@ left : '30dp'
 "#PlayButton":{
 	
 right : '3dp',
-color : 'blue'
+backgroundColor : 'blue'
 	
+},
+"#Pic":{
+right : '10dp',	
+bottom : '5dp'	
 }

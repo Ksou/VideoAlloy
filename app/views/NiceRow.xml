@@ -2,7 +2,7 @@
 	<TableViewRow id = 'NiceRow' >
 		
 			
-		<Button id = 'PlayButton'/>
+		<!--<Button id = 'PlayButton'/> -->
 		
 		<Label id = 'Title' / >	
 		<ImageView id = 'Pic'/>	

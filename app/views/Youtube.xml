@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id = 'WinMain' onFocus = 'PreLoad'>
+	<Window id = 'WinMain' title = 'Youtube' >
 	<Button id = 'Close'  visible = 'false' title = 'Close' />
 		<TableView id = 'MainTable'/>
 	</Window>

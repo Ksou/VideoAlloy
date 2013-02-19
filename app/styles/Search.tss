@@ -1,7 +1,18 @@
 ".container": { backgroundColor:"white"
-}
+},
 
 "Window":{
 backgroundColor :'white'	
 	
+},
+"#ButtonA":{
+	color : 'black',
+	title : 'Search' ,
+width : '129dp'  
+}
+,
+"#Reset":{
+	color : 'black',
+	title : 'Reset' ,
+width : '129dp'  
 }

@@ -5,28 +5,39 @@ function Controller() {
     $.__views.index = A$(Ti.UI.createTabGroup({
         id: "index"
     }), "TabGroup", null);
-    $.__views.__alloyId2 = Alloy.createController("Youtube", {
+    $.__views.__alloyId2 = Alloy.createController("Search", {
         id: "__alloyId2"
     });
     $.__views.__alloyId1 = A$(Ti.UI.createTab({
         window: $.__views.__alloyId2.getViewEx({
             recurse: !0
         }),
-        title: "Youtube",
+        title: "Search",
         id: "__alloyId1"
     }), "Tab", null);
     $.__views.index.addTab($.__views.__alloyId1);
-    $.__views.__alloyId4 = Alloy.createController("Search", {
+    $.__views.__alloyId4 = Alloy.createController("Youtube", {
         id: "__alloyId4"
     });
     $.__views.__alloyId3 = A$(Ti.UI.createTab({
         window: $.__views.__alloyId4.getViewEx({
             recurse: !0
         }),
-        title: "Search",
+        title: "Youtube",
         id: "__alloyId3"
     }), "Tab", null);
     $.__views.index.addTab($.__views.__alloyId3);
+    $.__views.__alloyId6 = Alloy.createController("CoverFlow", {
+        id: "__alloyId6"
+    });
+    $.__views.__alloyId5 = A$(Ti.UI.createTab({
+        window: $.__views.__alloyId6.getViewEx({
+            recurse: !0
+        }),
+        title: "Cover Flow",
+        id: "__alloyId5"
+    }), "Tab", null);
+    $.__views.index.addTab($.__views.__alloyId5);
     $.addTopLevelView($.__views.index);
     exports.destroy = function() {};
     _.extend($, $.__views);

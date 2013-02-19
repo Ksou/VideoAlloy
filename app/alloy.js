@@ -12,7 +12,8 @@
 //Alloy.Gloabls.MainWin  ;
 Alloy.Collections.Youtube = Alloy.createCollection('Youtube');
 Alloy.Globals.Close = null;
-Alloy.Globals.SearchString = "DJ Krush";
+//Alloy.Globals.SearchString = "DJ Krush";
 Alloy.Globals.LastSearch = null;
-Alloy.Globals.GlobalLoad = null ; 
+Alloy.Globals.GlobalLoad = function(){} ; 
 // basically I just make sure to never repeat the same search 2 times in a row 
+Alloy.Globals.CoverUpdate = function(){} ; 

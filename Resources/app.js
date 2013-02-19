@@ -4,10 +4,10 @@ Alloy.Collections.Youtube = Alloy.createCollection("Youtube");
 
 Alloy.Globals.Close = null;
 
-Alloy.Globals.SearchString = "DJ Krush";
-
 Alloy.Globals.LastSearch = null;
 
-Alloy.Globals.GlobalLoad = null;
+Alloy.Globals.GlobalLoad = function() {};
+
+Alloy.Globals.CoverUpdate = function() {};
 
 Alloy.createController("index");
