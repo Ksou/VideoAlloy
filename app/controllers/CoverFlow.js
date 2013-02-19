@@ -10,7 +10,7 @@ function CoverUpdate(){
 	
 	// pull the data from the collection , use it to fill the coverview 
 	var Images = [];
-	var VidIDs = []
+	var VidIDs = [] ; 
 	for (var x in Alloy.Collections.Youtube.models) {
 
 	var ImageM  =	 Alloy.Collections.Youtube.models[x].attributes.Duration ; 

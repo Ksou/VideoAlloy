@@ -12,8 +12,7 @@
 //Alloy.Gloabls.MainWin  ;
 Alloy.Collections.Youtube = Alloy.createCollection('Youtube');
 Alloy.Globals.Close = null;
-//Alloy.Globals.SearchString = "DJ Krush";
-Alloy.Globals.LastSearch = null;
+// we need this Close global here since the Row controller needs a way to set Close button 
 Alloy.Globals.GlobalLoad = function(){} ; 
-// basically I just make sure to never repeat the same search 2 times in a row 
+
 Alloy.Globals.CoverUpdate = function(){} ; 
