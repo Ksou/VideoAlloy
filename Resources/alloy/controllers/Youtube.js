@@ -5,7 +5,7 @@ function Controller() {
         YoutubeJson(LocSearch, ModelStore);
     }
     function YoutubeJson(search, callback) {
-        var url = "https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&q=" + search + "&max-results=5", xhr = Ti.Network.createHTTPClient();
+        var url = "https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&q=" + search + "&max-results=5&safeSearch=strict", xhr = Ti.Network.createHTTPClient();
         xhr.open("GET", url);
         xhr.send();
         xhr.error = function(e) {
@@ -31,7 +31,10 @@ function Controller() {
             });
             Ti.API.log(Video.get("ImageURL"));
             Ti.API.log(Video.get("Name"));
-            Alloy.Globals.Load && Alloy.Collections.Youtube.fetch();
+            if (Alloy.Globals.Load == 1) {
+                debugger;
+                Alloy.Collections.Youtube.fetch();
+            }
             Alloy.Collections.Youtube.add(Video);
             Video.save();
         }
@@ -39,6 +42,7 @@ function Controller() {
         Alloy.Globals.CoverUpdate();
     }
     function FillTable() {
+        debugger;
         var TableRows = [];
         for (var x in Alloy.Collections.Youtube.models) {
             var arg = {
@@ -50,7 +54,6 @@ function Controller() {
         $.MainTable.setData(TableRows);
     }
     function Restore() {
-        Alloy.Globals.Collections.Youtube.fetch();
         if (Alloy.Collections.Youtube.models[0]) {
             FillTable();
             Alloy.Globals.CoverUpdate();

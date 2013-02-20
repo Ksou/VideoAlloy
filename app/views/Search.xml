@@ -5,6 +5,6 @@
 		<Label top = '120dp' >Search here</Label>
 		<TextField id = 'SearchMe' hintText = 'Search'  />
 		<Button id = 'ButtonA' onClick = 'Search' bottom ='100dp'>
-		<Button id ='Reset' onClick = 'Reset' top ='50dp'>
+		<Button id ='Reset' onClick = 'AskReset' top ='50dp'>
 	</Window>
 </Alloy>

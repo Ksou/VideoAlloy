@@ -5,20 +5,31 @@ function Controller() {
         debugger;
         Alloy.Globals.GlobalLoad(SearchString);
     }
-    function ResetA() {
-        Ti.API.log("trying to reset");
-        Alloy.Collections.Youtube._reset();
-        debugger;
-        Alloy.Collections.Youtube.sync({});
+    function ResetA() {}
+    function AskReset() {
+        var AlertAsk = Ti.UI.createAlertDialog({
+            buttonNames: [ "All", "Current", "Cancel" ],
+            cancel: [ 2 ],
+            message: "Which models would you like to reset ?",
+            title: "Reset"
+        });
+        AlertAsk.addEventListener("click", function(e) {
+            e.index == 0 && ResetAll();
+            e.index == 1 && ResetCurrent();
+        });
+        AlertAsk.show();
     }
-    function Reset() {
+    function ResetAll() {
         Alloy.Collections.Youtube.fetch({});
+        debugger;
         while (0 < Alloy.Collections.Youtube.length) {
-            debugger;
             var Name = Alloy.Collections.Youtube.models[0].attributes.Name;
             Alloy.Collections.Youtube.models[0].destroy();
             Ti.API.log(Name + "  Deleted");
         }
+    }
+    function ResetCurrent() {
+        Alloy.Collections.Youtube._reset();
         debugger;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -73,11 +84,12 @@ function Controller() {
         top: "50dp"
     }), "Button", $.__views.Win);
     $.__views.Win.add($.__views.Reset);
-    Reset ? $.__views.Reset.on("click", Reset) : __defers["$.__views.Reset!click!Reset"] = !0;
+    AskReset ? $.__views.Reset.on("click", AskReset) : __defers["$.__views.Reset!click!AskReset"] = !0;
     exports.destroy = function() {};
     _.extend($, $.__views);
+    ResetCurrent();
     __defers["$.__views.ButtonA!click!Search"] && $.__views.ButtonA.on("click", Search);
-    __defers["$.__views.Reset!click!Reset"] && $.__views.Reset.on("click", Reset);
+    __defers["$.__views.Reset!click!AskReset"] && $.__views.Reset.on("click", AskReset);
     _.extend($, exports);
 }
 

@@ -1,13 +1,14 @@
 function Controller() {
     function CoverUpdate() {
-        var Images = [], VidIDs = [];
-        for (var x in Alloy.Collections.Youtube.models) {
-            var ImageM = Alloy.Collections.Youtube.models[x].attributes.HQimage, VidID = Alloy.Collections.Youtube.models[x].attributes.VidID;
+        var Images = [], VidIDs = [], MaxImages = 10;
+        Alloy.Collections.Youtube.length < 10 && (MaxImages = Alloy.Collections.Youtube.length);
+        for (var x = 0; x < MaxImages; x++) {
+            var ImageM = Alloy.Collections.Youtube.models[x].attributes.HQimage || Alloy.Collections.Youtube.models[x].attributes.ImageURL, VidID = Alloy.Collections.Youtube.models[x].attributes.VidID;
             Images.push(ImageM);
             VidIDs.push(VidID);
         }
-        $.CoverFlow.width = Titanium.UI.FILL * 0.85;
-        $.CoverFlow.height = Titanium.UI.FILL * 0.85;
+        $.CoverFlow.width = Titanium.UI.FILL;
+        $.CoverFlow.height = Titanium.UI.FILL;
         $.CoverFlow.setImages(Images);
         $.CoverFlow.addEventListener("click", function(e) {
             if (e.index) {

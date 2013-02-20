@@ -5,23 +5,34 @@ Alloy.Globals.CoverUpdate = function() {
 };
 
 function CoverUpdate() {
-
+	// updates the coverflow
 	// pull the data from the collection , use it to fill the coverview
 	var Images = [];
 	var VidIDs = [];
-	for (var x in Alloy.Collections.Youtube.models) {
-		// figure out way 
-		var ImageM = Alloy.Collections.Youtube.models[x].attributes.HQimage;
+	// more then 10 and it crashes or becomes slow 
+var MaxImages  = 10; 	
+	if(Alloy.Collections.Youtube.length < 10)
+	{
+		MaxImages = Alloy.Collections.Youtube.length 
 		
-		//var textIm =  Ti.UI.createLabel({text : Alloy.Collections.Youtube.models[x].attributes.Name}) ; 
-		// go ahead and add the text label to the image , 
-	//	ImageM.add(textIm) ; 
+	}
+	for (var x = 0 ;  x < MaxImages ; x++  ) {
+		// figure out way
+		// we can't always get  a HQimage, so while its prefered we have a || to load the imageURL instead
+		// the simulator crashes after 15 coverview images or so , lowering to SQ
+		
+		var ImageM = Alloy.Collections.Youtube.models[x].attributes.HQimage || Alloy.Collections.Youtube.models[x].attributes.ImageURL;
+		
+		//var ImageM = Alloy.Collections.Youtube.models[x].attributes.ImageURL;
+		//var textIm =  Ti.UI.createLabel({text : Alloy.Collections.Youtube.models[x].attributes.Name}) ;
+		// go ahead and add the text label to the image ,
+		//	ImageM.add(textIm) ;
 		var VidID = Alloy.Collections.Youtube.models[x].attributes.VidID;
 		Images.push(ImageM);
 		VidIDs.push(VidID);
 	}
-	$.CoverFlow.width = (Titanium.UI.FILL ) * 0.85;
-	$.CoverFlow.height =( Titanium.UI.FILL) * 0.85 ;
+	$.CoverFlow.width = Titanium.UI.FILL ;
+	$.CoverFlow.height = Titanium.UI.FILL;
 	$.CoverFlow.setImages(Images);
 	//
 

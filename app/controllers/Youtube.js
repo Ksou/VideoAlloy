@@ -17,7 +17,7 @@ function SearchStart(LocSearch) {
 }
 
 function YoutubeJson(search, callback) {
-	var url = 'https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&q=' + search + '&max-results=5';
+	var url = 'https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&q=' + search + '&max-results=5&safeSearch=strict';
 	var xhr = Ti.Network.createHTTPClient();
 	xhr.open("GET", url);
 	xhr.send();
@@ -56,7 +56,13 @@ function ModelStore(dat) {
 		Ti.API.log(Video.get('Name'));
 		// run sometype of compare to filter out duplicates when adding
 		// if we want to load our last searches  
-		if (Alloy.Globals.Load) {
+		if (Alloy.Globals.Load == true) {
+			// I ran into an Alloy Compiler bug here 
+			// if(Alloy.Globals.Load) would run even if Alloy.Globals.Load = false
+				
+				
+			
+		debugger ; 
 		Alloy.Collections.Youtube.fetch() ; 
 	}
 		
@@ -74,8 +80,9 @@ function ModelStore(dat) {
 
 function FillTable() {
 	// pull the data from the collection , use it to make nice rows
+	debugger ; 
 	var TableRows = [];
-
+	
 	for (var x in Alloy.Collections.Youtube.models) {
 		var arg = {
 			Model : Alloy.Collections.Youtube.models[x].attributes,
@@ -98,7 +105,7 @@ function FillTable() {
 function Restore()
 {// Restores the table without performing a search 
 	//Alloy.Globals.Save  = true ; 
-Alloy.Globals.Collections.Youtube.fetch() ; 
+//Alloy.Globals.Collections.Youtube.fetch() ; 
 if(Alloy.Collections.Youtube.models[0]){	
 	// make sure it actually exist before doing anything 
 FillTable();

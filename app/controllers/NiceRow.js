@@ -9,8 +9,8 @@ function NiceRow(model, win) {
 	//var args = arguments[0] || {} ;
 
 	// take all the data we have and use it for said row
-// ok , so appearently we get a free "alloy_id" field 
-	$.Title.text = model.Name ;
+	// ok , so appearently we get a free "alloy_id" field
+	$.Title.text = model.Name;
 	$.Pic.image = model.ImageURL;
 	$.Pic.addEventListener('click', function() {
 		// create the webview with the embeded video ,
