@@ -38,6 +38,17 @@ function Controller() {
         id: "__alloyId5"
     }), "Tab", null);
     $.__views.index.addTab($.__views.__alloyId5);
+    $.__views.__alloyId8 = Alloy.createController("Stats", {
+        id: "__alloyId8"
+    });
+    $.__views.__alloyId7 = A$(Ti.UI.createTab({
+        window: $.__views.__alloyId8.getViewEx({
+            recurse: !0
+        }),
+        title: "Stats",
+        id: "__alloyId7"
+    }), "Tab", null);
+    $.__views.index.addTab($.__views.__alloyId7);
     $.addTopLevelView($.__views.index);
     exports.destroy = function() {};
     _.extend($, $.__views);

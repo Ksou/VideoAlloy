@@ -56,12 +56,12 @@ function Controller() {
         id: "titleL"
     }), "Label", $.__views.Win);
     $.__views.Win.add($.__views.titleL);
-    $.__views.__alloyId7 = A$(Ti.UI.createLabel({
+    $.__views.__alloyId9 = A$(Ti.UI.createLabel({
         text: "Search here",
         top: "120dp",
-        id: "__alloyId7"
+        id: "__alloyId9"
     }), "Label", $.__views.Win);
-    $.__views.Win.add($.__views.__alloyId7);
+    $.__views.Win.add($.__views.__alloyId9);
     $.__views.SearchMe = A$(Ti.UI.createTextField({
         id: "SearchMe",
         hintText: "Search"

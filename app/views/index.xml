@@ -1,17 +1,17 @@
 <Alloy>
 	<TabGroup>
 		<Tab title = 'Search' >
-<Require src ="Search"/>
-			
-
+		<Require src ="Search"/>
 		</Tab>
 		<Tab title = 'Youtube'>
-
 			<Require src="Youtube"/>
 		</Tab>
 		<Tab title = 'Cover Flow'>
 			<Require src = 'CoverFlow'/ >
-			</Tab>
+		</Tab>
+		<Tab title = 'Stats'>
+				<Require src = 'Stats'/>
+		</Tab>	
 	</TabGroup>
 
 </Alloy>

@@ -1,0 +1,16 @@
+".container": {
+	backgroundColor: "white"
+},
+"Window":{
+backgroundColor :'white'	
+	
+},
+"#Total":{
+top : '100dp' 
+	
+	
+}, 
+"#Local":{
+top : '150dp'	
+	
+}
