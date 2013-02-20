@@ -1,7 +1,7 @@
 <Alloy>
 	<Window id="window" title = ' Cover Flow '>
 		<Button id = 'Close'  visible = 'false' title = 'Close' />
-		<CoverFlowView id="CoverFlow" platform="ios" backgroundColor="#000">
+		<CoverFlowView id="CoverFlow" platform="ios" backgroundColor="black">
 
 			<!-- The Images tag sets the CoverFlowView.images property. -->
 

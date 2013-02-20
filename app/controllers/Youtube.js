@@ -21,9 +21,14 @@ function YoutubeJson(search, callback) {
 	var xhr = Ti.Network.createHTTPClient();
 	xhr.open("GET", url);
 	xhr.send();
+	xhr.error = function(e){
+	Ti.API.log('cant get JSON data') ; 	
+		
+	}
 	xhr.onload = function(e) {
 
-		Ti.API.log(this.responseText); debugger ;
+		Ti.API.log(this.responseText);
+		debugger ;
 		var Json = JSON.parse(this.responseText);
 
 		callback(Json.data);
@@ -38,19 +43,24 @@ function ModelStore(dat) {
 
 	for (var x in data) {
 		// Every JSON object is turned into a model , their isn't a youtube Rest API
-		var Video = Alloy.createModel('Youtube', {
+		var Video = Alloy.createModel('YoutubeB', {
 			Name : data[x].title,
-			//	Duration : data[x].duration,
+			Duration : data[x].duration,
 			VidID : data[x].id,
 			ImageURL : data[x].thumbnail.sqDefault,
-			Duration : data[x].thumbnail.hqDefault
-			// can't add a collum to a model once created, using  Duration collum for now
+			HQimage : data[x].thumbnail.hqDefault
+			
 		});
-
+		
 		Ti.API.log(Video.get('ImageURL'));
 		Ti.API.log(Video.get('Name'));
 		// run sometype of compare to filter out duplicates when adding
-
+		// if we want to load our last searches  
+		if (Alloy.Globals.Load) {
+		Alloy.Collections.Youtube.fetch() ; 
+	}
+		
+		
 		Alloy.Collections.Youtube.add(Video);
 
 		Video.save();
@@ -83,3 +93,18 @@ function FillTable() {
 	$.MainTable.setData(TableRows);
 }
 
+
+
+function Restore()
+{// Restores the table without performing a search 
+	//Alloy.Globals.Save  = true ; 
+Alloy.Globals.Collections.Youtube.fetch() ; 
+if(Alloy.Collections.Youtube.models[0]){	
+	// make sure it actually exist before doing anything 
+FillTable();
+Alloy.Globals.CoverUpdate() ; 
+}
+//
+
+
+}

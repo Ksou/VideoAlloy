@@ -11,6 +11,8 @@ exports.definition = {
 			// can't add collum !
 		},
 		"adapter" : {
+		
+		// changing type to 'sql_new' breaks it , wil investigate latter 
 			"type" : "sql",
 			"collection_name" : "Youtube"
 		}

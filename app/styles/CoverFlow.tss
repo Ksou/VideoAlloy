@@ -2,5 +2,5 @@
 },
 "CoverFlowView" : { height : '300dp',
 	width : '300dp' ,
-
+//	backgroundColor : 'blue'
 }

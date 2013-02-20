@@ -1,8 +1,10 @@
 <Alloy>
 	<Window id = 'Win' title = 'Search'  >
+	<Switch id= 'Load' />
+	<Label id = 'titleL'/>	
 		<Label top = '120dp' >Search here</Label>
 		<TextField id = 'SearchMe' hintText = 'Search'  />
-		<Button id = 'ButtonA' onClick = 'Search' bottom ='50dp'>
+		<Button id = 'ButtonA' onClick = 'Search' bottom ='100dp'>
 		<Button id ='Reset' onClick = 'Reset' top ='50dp'>
 	</Window>
 </Alloy>

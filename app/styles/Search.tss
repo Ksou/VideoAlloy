@@ -15,4 +15,20 @@ width : '129dp'
 	color : 'black',
 	title : 'Reset' ,
 width : '129dp'  
+},
+"#Load":{
+	title : 'Save' , 
+	value : 'false' , 
+	color : 'black',
+	//title : 'Search' ,
+	bottom : '50dp', 
+width : '89dp'  
+},
+'#titleL':{
+	// our title for the load switch 
+text : 'Load Previous ?',
+bottom : '25dp' 	
+	
+	
 }
+

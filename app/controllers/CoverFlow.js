@@ -10,14 +10,18 @@ function CoverUpdate() {
 	var Images = [];
 	var VidIDs = [];
 	for (var x in Alloy.Collections.Youtube.models) {
-
-		var ImageM = Alloy.Collections.Youtube.models[x].attributes.Duration;
+		// figure out way 
+		var ImageM = Alloy.Collections.Youtube.models[x].attributes.HQimage;
+		
+		//var textIm =  Ti.UI.createLabel({text : Alloy.Collections.Youtube.models[x].attributes.Name}) ; 
+		// go ahead and add the text label to the image , 
+	//	ImageM.add(textIm) ; 
 		var VidID = Alloy.Collections.Youtube.models[x].attributes.VidID;
 		Images.push(ImageM);
 		VidIDs.push(VidID);
 	}
-	$.CoverFlow.width = Titanium.UI.FILL;
-	$.CoverFlow.height = Titanium.UI.FILL;
+	$.CoverFlow.width = (Titanium.UI.FILL ) * 0.85;
+	$.CoverFlow.height =( Titanium.UI.FILL) * 0.85 ;
 	$.CoverFlow.setImages(Images);
 	//
 

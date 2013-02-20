@@ -10,9 +10,15 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 //Alloy.Gloabls.MainWin  ;
-Alloy.Collections.Youtube = Alloy.createCollection('Youtube');
+//Alloy.Collections.Youtube = Alloy.createCollection('Youtube');
+Alloy.Collections.Youtube = Alloy.createCollection('YoutubeB'); 
 Alloy.Globals.Close = null;
-// we need this Close global here since the Row controller needs a way to set Close button 
-Alloy.Globals.GlobalLoad = function(){} ; 
+// we need this Close global here since the Row controller needs a way to set Close button
+Alloy.Globals.GlobalLoad = function() {
+};
 
-Alloy.Globals.CoverUpdate = function(){} ; 
+Alloy.Globals.CoverUpdate = function() {
+};
+
+Alloy.Globals.Load = false;
+// 
