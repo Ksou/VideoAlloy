@@ -8,6 +8,9 @@ function Controller() {
         var url = "https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&q=" + search + "&max-results=5", xhr = Ti.Network.createHTTPClient();
         xhr.open("GET", url);
         xhr.send();
+        xhr.error = function(e) {
+            Ti.API.log("cant get JSON data");
+        };
         xhr.onload = function(e) {
             Ti.API.log(this.responseText);
             debugger;
@@ -19,14 +22,16 @@ function Controller() {
         var data = dat.items;
         Ti.API.log(data[1].title);
         for (var x in data) {
-            var Video = Alloy.createModel("Youtube", {
+            var Video = Alloy.createModel("YoutubeB", {
                 Name: data[x].title,
+                Duration: data[x].duration,
                 VidID: data[x].id,
                 ImageURL: data[x].thumbnail.sqDefault,
-                Duration: data[x].thumbnail.hqDefault
+                HQimage: data[x].thumbnail.hqDefault
             });
             Ti.API.log(Video.get("ImageURL"));
             Ti.API.log(Video.get("Name"));
+            Alloy.Globals.Load && Alloy.Collections.Youtube.fetch();
             Alloy.Collections.Youtube.add(Video);
             Video.save();
         }
@@ -43,6 +48,13 @@ function Controller() {
             TableRows.push(Row);
         }
         $.MainTable.setData(TableRows);
+    }
+    function Restore() {
+        Alloy.Globals.Collections.Youtube.fetch();
+        if (Alloy.Collections.Youtube.models[0]) {
+            FillTable();
+            Alloy.Globals.CoverUpdate();
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     $model = arguments[0] ? arguments[0].$model : null;

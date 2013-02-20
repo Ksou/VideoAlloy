@@ -1,11 +1,25 @@
 function Controller() {
     function Search() {
+        Alloy.Globals.Load = $.Load.value;
         var SearchString = $.SearchMe.value;
         debugger;
         Alloy.Globals.GlobalLoad(SearchString);
     }
+    function ResetA() {
+        Ti.API.log("trying to reset");
+        Alloy.Collections.Youtube._reset();
+        debugger;
+        Alloy.Collections.Youtube.sync({});
+    }
     function Reset() {
-        Alloy.Collections.Youtube.reset();
+        Alloy.Collections.Youtube.fetch({});
+        while (0 < Alloy.Collections.Youtube.length) {
+            debugger;
+            var Name = Alloy.Collections.Youtube.models[0].attributes.Name;
+            Alloy.Collections.Youtube.models[0].destroy();
+            Ti.API.log(Name + "  Deleted");
+        }
+        debugger;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     $model = arguments[0] ? arguments[0].$model : null;
@@ -16,6 +30,21 @@ function Controller() {
         title: "Search"
     }), "Window", null);
     $.addTopLevelView($.__views.Win);
+    $.__views.Load = A$(Ti.UI.createSwitch({
+        title: "Save",
+        value: "false",
+        color: "black",
+        bottom: "50dp",
+        width: "89dp",
+        id: "Load"
+    }), "Switch", $.__views.Win);
+    $.__views.Win.add($.__views.Load);
+    $.__views.titleL = A$(Ti.UI.createLabel({
+        text: "Load Previous ?",
+        bottom: "25dp",
+        id: "titleL"
+    }), "Label", $.__views.Win);
+    $.__views.Win.add($.__views.titleL);
     $.__views.__alloyId7 = A$(Ti.UI.createLabel({
         text: "Search here",
         top: "120dp",
@@ -32,7 +61,7 @@ function Controller() {
         title: "Search",
         width: "129dp",
         id: "ButtonA",
-        bottom: "50dp"
+        bottom: "100dp"
     }), "Button", $.__views.Win);
     $.__views.Win.add($.__views.ButtonA);
     Search ? $.__views.ButtonA.on("click", Search) : __defers["$.__views.ButtonA!click!Search"] = !0;

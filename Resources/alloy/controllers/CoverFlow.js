@@ -2,12 +2,12 @@ function Controller() {
     function CoverUpdate() {
         var Images = [], VidIDs = [];
         for (var x in Alloy.Collections.Youtube.models) {
-            var ImageM = Alloy.Collections.Youtube.models[x].attributes.Duration, VidID = Alloy.Collections.Youtube.models[x].attributes.VidID;
+            var ImageM = Alloy.Collections.Youtube.models[x].attributes.HQimage, VidID = Alloy.Collections.Youtube.models[x].attributes.VidID;
             Images.push(ImageM);
             VidIDs.push(VidID);
         }
-        $.CoverFlow.width = Titanium.UI.FILL;
-        $.CoverFlow.height = Titanium.UI.FILL;
+        $.CoverFlow.width = Titanium.UI.FILL * 0.85;
+        $.CoverFlow.height = Titanium.UI.FILL * 0.85;
         $.CoverFlow.setImages(Images);
         $.CoverFlow.addEventListener("click", function(e) {
             if (e.index) {
@@ -43,7 +43,7 @@ function Controller() {
         height: "300dp",
         width: "300dp",
         id: "CoverFlow",
-        backgroundColor: "#000"
+        backgroundColor: "black"
     }), "CoverFlowView", $.__views.window);
     $.__views.window.add($.__views.CoverFlow);
     exports.destroy = function() {};

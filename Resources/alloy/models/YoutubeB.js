@@ -3,13 +3,13 @@ exports.definition = {
         columns: {
             Name: "string",
             Duration: "string",
+            VidID: "string",
             ImageURL: "string",
-            VideoURL: "string",
-            VidID: "string"
+            HQimage: "string"
         },
         adapter: {
-            type: "sql",
-            collection_name: "Youtube"
+            type: "sql_new",
+            collection_name: "YoutubeB"
         }
     },
     extendModel: function(Model) {
@@ -24,14 +24,14 @@ exports.definition = {
 
 var Alloy = require("alloy"), _ = require("alloy/underscore")._, model, collection;
 
-model = Alloy.M("Youtube", exports.definition, [ function(migration) {
-    migration.name = "Youtube";
-    migration.id = "201301191639305";
+model = Alloy.M("YoutubeB", exports.definition, [ function(migration) {
+    migration.name = "YoutubeB";
+    migration.id = "2013012015420";
     migration.up = function(db) {};
     migration.down = function(db) {};
 } ]);
 
-collection = Alloy.C("Youtube", exports.definition, model);
+collection = Alloy.C("YoutubeB", exports.definition, model);
 
 exports.Model = model;
 
