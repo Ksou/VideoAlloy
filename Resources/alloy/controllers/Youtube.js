@@ -37,13 +37,18 @@ function Controller() {
         if (Alloy.Globals.Load == 1) {
             debugger;
             var tempCollection = clone(Alloy.Collections.Youtube);
-            tempCollection.fetch();
+            tempCollection.fetch({
+                success: function() {
+                    FillTable(tempCollection);
+                    Alloy.Globals.CoverUpdate(tempCollection);
+                }
+            });
+        } else {
+            FillTable(Alloy.Collections.Youtube);
+            Alloy.Globals.CoverUpdate(Alloy.Collections.Youtube);
         }
-        FillTable(tempCollection);
-        Alloy.Globals.CoverUpdate(tempCollection);
     }
     function FillTable(tempCollection) {
-        tempCollection == null && (tempCollection = Alloy.Collections.Youtube);
         debugger;
         var TableRows = [];
         for (var x in tempCollection.models) {

@@ -1,7 +1,6 @@
 <Alloy>
 	<Window id = 'StatsWin' title = 'Stats'  onFocus = 'UpdateStats'>
-	<Label id = 'Total'/>
-	<Label id ='Local'/>
-		
-		 </Window>
+		<Label id = 'Total'/>
+		<Label id ='Local'/>
+	</Window>
 </Alloy>

@@ -21,14 +21,13 @@ function YoutubeJson(search, callback) {
 	var xhr = Ti.Network.createHTTPClient();
 	xhr.open("GET", url);
 	xhr.send();
-	xhr.error = function(e){
-	Ti.API.log('cant get JSON data') ; 	
-		
+	xhr.error = function(e) {
+		Ti.API.log('cant get JSON data');
+
 	}
 	xhr.onload = function(e) {
 
-		Ti.API.log(this.responseText);
-		debugger ;
+		Ti.API.log(this.responseText); debugger ;
 		var Json = JSON.parse(this.responseText);
 
 		callback(Json.data);
@@ -49,54 +48,73 @@ function ModelStore(dat) {
 			VidID : data[x].id,
 			ImageURL : data[x].thumbnail.sqDefault,
 			HQimage : data[x].thumbnail.hqDefault
-			
+
 		});
-		
+
 		Ti.API.log(Video.get('ImageURL'));
 		Ti.API.log(Video.get('Name'));
 		// run sometype of compare to filter out duplicates when adding
-		// if we want to load our last searches  
+		// if we want to load our last searches
 
-		
-		
 		Alloy.Collections.Youtube.add(Video);
 
 		Video.save();
 	}
 
-		if (Alloy.Globals.Load == true) {
-			// I ran into an Alloy Compiler bug here 
-			// if(Alloy.Globals.Load) would run even if Alloy.Globals.Load = false
-				
-				
-	
-		debugger ; 
-	var tempCollection =	  clone(Alloy.Collections.Youtube) ; 
-	tempCollection.fetch() ;
-			// lets clone this so we can keep our orignal collection
-	//var 
-	}
-	FillTable(tempCollection);
+	if (Alloy.Globals.Load == true) {
+		// I ran into an Alloy Compiler bug here
+		// if(Alloy.Globals.Load) would run even if Alloy.Globals.Load = false
+
+		debugger ;
+		var tempCollection = clone(Alloy.Collections.Youtube);
+		tempCollection.fetch(
+			{
+			success : function(){// doing this inside of a callback so it runs smoother 
+				FillTable(tempCollection);
 	Alloy.Globals.CoverUpdate(tempCollection);
+				
+			}	
+				
+			}
+			
+		);
+		// lets clone this so we can keep our orignal collection
+		//according to the backbone JS docs their SHOULD be a .clone function 
+	}
+	else{
+		// if we don't need to load , run it , passing the  Alloy.Collections.Youtube directly 
+	FillTable( Alloy.Collections.Youtube);
+	Alloy.Globals.CoverUpdate( Alloy.Collections.Youtube);	
+		
+	}
+	
+	
+	
 	// once thats done , go ahead and  run a function that basically takes out models and makes a nice row for each of them
 
 }
-var clone = (function(){ 
-	// found this on stack , the built in backbone collection.clone function does not work !
-  return function (obj) { Clone.prototype=obj; return new Clone() };
-  function Clone(){}
-}());
 
+var clone = ( function() {
+		// found this on stack , the built in backbone collection.clone function does not work !
+		return function(obj) {
+			Clone.prototype = obj;
+			return new Clone()
+		};
+		function Clone() {
+		}
+
+	}());
 
 function FillTable(tempCollection) {
 	// pull the data from the collection , use it to make nice rows
-	if(tempCollection == null){
-	tempCollection = Alloy.Collections.Youtube ; 
-		
-	}
-	debugger ; 
-	var TableRows = [];
+	/*(if (tempCollection == null) {
+		tempCollection = Alloy.Collections.Youtube;
+
+	}*/
 	
+	debugger ;
+	var TableRows = [];
+
 	for (var x in tempCollection.models) {
 		var arg = {
 			Model : tempCollection.models[x].attributes,
@@ -114,18 +132,14 @@ function FillTable(tempCollection) {
 	$.MainTable.setData(TableRows);
 }
 
-
-
-function Restore()
-{// Restores the table without performing a search 
-	//Alloy.Globals.Save  = true ; 
-//Alloy.Globals.Collections.Youtube.fetch() ; 
-if(Alloy.Collections.Youtube.models[0]){	
-	// make sure it actually exist before doing anything 
-FillTable();
-Alloy.Globals.CoverUpdate() ; 
-}
-//
-
+function Restore() {// Restores the table without performing a search
+	//Alloy.Globals.Save  = true ;
+	//Alloy.Globals.Collections.Youtube.fetch() ;
+	if (Alloy.Collections.Youtube.models[0]) {
+		// make sure it actually exist before doing anything
+		FillTable();
+		Alloy.Globals.CoverUpdate();
+	}
+	//
 
 }

@@ -1,6 +1,5 @@
 function Controller() {
     function CoverUpdate(tempCollection) {
-        tempCollection == null && (tempCollection = Alloy.Collections.Youtube);
         var Images = [], VidIDs = [], MaxImages = 10;
         tempCollection.length < 10 && (MaxImages = tempCollection.length);
         for (var x = 0; x < MaxImages; x++) {
@@ -50,8 +49,8 @@ function Controller() {
     $.__views.window.add($.__views.CoverFlow);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.Globals.CoverUpdate = function() {
-        CoverUpdate();
+    Alloy.Globals.CoverUpdate = function(tempCollection) {
+        CoverUpdate(tempCollection);
     };
     _.extend($, exports);
 }

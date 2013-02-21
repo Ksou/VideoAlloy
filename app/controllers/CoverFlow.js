@@ -1,16 +1,16 @@
-Alloy.Globals.CoverUpdate = function() {
+Alloy.Globals.CoverUpdate = function(tempCollection) {
 
-	CoverUpdate();
+	CoverUpdate(tempCollection);
 
 };
 
 function CoverUpdate(tempCollection) {
 
-	if(tempCollection == null)
+	/*if(tempCollection == null)
 	{
 	tempCollection = Alloy.Collections.Youtube ; 	
 		
-	}
+	}*/
 	// updates the coverflow
 	// pull the data from the collection , use it to fill the coverview
 	var Images = [];
