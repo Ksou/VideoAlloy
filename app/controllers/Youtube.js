@@ -66,13 +66,18 @@ function ModelStore(dat) {
 		// if(Alloy.Globals.Load) would run even if Alloy.Globals.Load = false
 
 		debugger ;
-		var tempCollection = clone(Alloy.Collections.Youtube);
+		var tempCollection = _.clone(Alloy.Collections.Youtube);
 		tempCollection.fetch(
 			{
 			success : function(){// doing this inside of a callback so it runs smoother 
 				FillTable(tempCollection);
 	Alloy.Globals.CoverUpdate(tempCollection);
 				
+			},
+			
+			error : function(){
+				
+				alert('Can not load models') ; 
 			}	
 				
 			}
@@ -94,24 +99,9 @@ function ModelStore(dat) {
 
 }
 
-var clone = ( function() {
-		// found this on stack , the built in backbone collection.clone function does not work !
-		return function(obj) {
-			Clone.prototype = obj;
-			return new Clone()
-		};
-		function Clone() {
-		}
-
-	}());
 
 function FillTable(tempCollection) {
-	// pull the data from the collection , use it to make nice rows
-	/*(if (tempCollection == null) {
-		tempCollection = Alloy.Collections.Youtube;
 
-	}*/
-	
 	debugger ;
 	var TableRows = [];
 
@@ -130,16 +120,4 @@ function FillTable(tempCollection) {
 	}
 
 	$.MainTable.setData(TableRows);
-}
-
-function Restore() {// Restores the table without performing a search
-	//Alloy.Globals.Save  = true ;
-	//Alloy.Globals.Collections.Youtube.fetch() ;
-	if (Alloy.Collections.Youtube.models[0]) {
-		// make sure it actually exist before doing anything
-		FillTable();
-		Alloy.Globals.CoverUpdate();
-	}
-	//
-
 }

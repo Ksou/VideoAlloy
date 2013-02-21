@@ -4,7 +4,7 @@
 "#NiceRow" :{
 height : '80dp',
 
-
+selectionStyle : 'GRAY', 
 backgroundColor : '#e6e6e6', 	
 borderRadius :'3'
 

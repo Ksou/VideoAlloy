@@ -36,11 +36,14 @@ function Controller() {
         }
         if (Alloy.Globals.Load == 1) {
             debugger;
-            var tempCollection = clone(Alloy.Collections.Youtube);
+            var tempCollection = _.clone(Alloy.Collections.Youtube);
             tempCollection.fetch({
                 success: function() {
                     FillTable(tempCollection);
                     Alloy.Globals.CoverUpdate(tempCollection);
+                },
+                error: function() {
+                    alert("Can not load models");
                 }
             });
         } else {
@@ -59,12 +62,6 @@ function Controller() {
             TableRows.push(Row);
         }
         $.MainTable.setData(TableRows);
-    }
-    function Restore() {
-        if (Alloy.Collections.Youtube.models[0]) {
-            FillTable();
-            Alloy.Globals.CoverUpdate();
-        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     $model = arguments[0] ? arguments[0].$model : null;
@@ -90,13 +87,6 @@ function Controller() {
     Alloy.Globals.GlobalLoad = function(LocSearch) {
         SearchStart(LocSearch);
     };
-    var clone = function() {
-        function Clone() {}
-        return function(obj) {
-            Clone.prototype = obj;
-            return new Clone;
-        };
-    }();
     _.extend($, exports);
 }
 

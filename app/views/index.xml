@@ -1,15 +1,15 @@
 <Alloy>
 	<TabGroup>
-		<Tab title = 'Search' >
+		<Tab title = 'Search' icon ='12_hardware_keyboard.png' >
 		<Require src ="Search"/>
 		</Tab>
-		<Tab title = 'Youtube'>
+		<Tab title = 'Youtube' icon = '9_av_play.png' >
 			<Require src="Youtube"/>
 		</Tab>
-		<Tab title = 'Cover Flow'>
+		<Tab title = 'Cover Flow' icon = '9_av_full_screen.png'>
 			<Require src = 'CoverFlow'/ >
 		</Tab>
-		<Tab title = 'Stats'>
+		<Tab title = 'Stats' icon ='12_hardware_dock.png'>
 				<Require src = 'Stats'/>
 		</Tab>	
 	</TabGroup>

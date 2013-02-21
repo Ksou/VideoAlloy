@@ -13,6 +13,7 @@ function Controller() {
             recurse: !0
         }),
         title: "Search",
+        icon: "12_hardware_keyboard.png",
         id: "__alloyId1"
     }), "Tab", null);
     $.__views.index.addTab($.__views.__alloyId1);
@@ -24,6 +25,7 @@ function Controller() {
             recurse: !0
         }),
         title: "Youtube",
+        icon: "9_av_play.png",
         id: "__alloyId3"
     }), "Tab", null);
     $.__views.index.addTab($.__views.__alloyId3);
@@ -35,6 +37,7 @@ function Controller() {
             recurse: !0
         }),
         title: "Cover Flow",
+        icon: "9_av_full_screen.png",
         id: "__alloyId5"
     }), "Tab", null);
     $.__views.index.addTab($.__views.__alloyId5);
@@ -46,6 +49,7 @@ function Controller() {
             recurse: !0
         }),
         title: "Stats",
+        icon: "12_hardware_dock.png",
         id: "__alloyId7"
     }), "Tab", null);
     $.__views.index.addTab($.__views.__alloyId7);

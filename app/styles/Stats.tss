@@ -3,9 +3,14 @@
 "Window": { backgroundColor :'white'
 
 },
-"#Total": { top :'50dp'
+"#Total": { top :'40dp'
 
 },
-"#Local": { top :'75dp'
+"#Local": { top :'65dp'
 
+}, 
+"#Columns":{
+ top : '93dp',
+ text : 'Column  : type'	
+//	font : "fontWeight : 'bold'"
 }

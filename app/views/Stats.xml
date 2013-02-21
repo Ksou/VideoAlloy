@@ -1,6 +1,9 @@
 <Alloy>
-	<Window id = 'StatsWin' title = 'Stats'  onFocus = 'UpdateStats'>
+	<Window id = 'StatsW' title = 'Stats'  onFocus = 'UpdateStats'>
+	<ScrollView id = 'StatsWin'  showVerticalScrollIndicator="true">
 		<Label id = 'Total'/>
 		<Label id ='Local'/>
+		<Label id ='Columns'>
+	</ScrollView>
 	</Window>
 </Alloy>

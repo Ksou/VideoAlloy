@@ -2,7 +2,7 @@ function Controller() {
     function NiceRow(model, win) {
         $.Title.text = model.Name;
         $.Pic.image = model.ImageURL;
-        $.Pic.addEventListener("click", function() {
+        $.NiceRow.addEventListener("click", function() {
             var webView = Ti.UI.createWebView({
                 url: "http://www.youtube.com/embed/" + model.VidID + "?autoplay=1&autohide=1&cc_load_policy=0&color=white&controls=0&fs=0&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0"
             });
@@ -21,6 +21,7 @@ function Controller() {
     var $ = this, exports = {}, __defers = {};
     $.__views.NiceRow = A$(Ti.UI.createTableViewRow({
         height: "80dp",
+        selectionStyle: "GRAY",
         backgroundColor: "#e6e6e6",
         borderRadius: "3",
         id: "NiceRow"
