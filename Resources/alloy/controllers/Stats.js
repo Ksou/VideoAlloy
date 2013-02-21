@@ -1,8 +1,9 @@
 function Controller() {
     function UpdateStats() {
         $.Local.text = Alloy.Collections.Youtube.length + "Local models";
-        Alloy.Collections.Youtube.fetch();
-        $.Total.text = Alloy.Collections.Youtube.length + "Total models";
+        var TempB = clone(Alloy.Collections.Youtube);
+        TempB.fetch();
+        $.Total.text = TempB.length + "Total models";
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     $model = arguments[0] ? arguments[0].$model : null;
@@ -26,6 +27,13 @@ function Controller() {
     $.__views.StatsWin.add($.__views.Local);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var clone = function() {
+        function Clone() {}
+        return function(obj) {
+            Clone.prototype = obj;
+            return new Clone;
+        };
+    }();
     __defers["$.__views.StatsWin!focus!UpdateStats"] && $.__views.StatsWin.on("focus", UpdateStats);
     _.extend($, exports);
 }

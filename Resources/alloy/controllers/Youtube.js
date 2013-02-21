@@ -31,22 +31,24 @@ function Controller() {
             });
             Ti.API.log(Video.get("ImageURL"));
             Ti.API.log(Video.get("Name"));
-            if (Alloy.Globals.Load == 1) {
-                debugger;
-                Alloy.Collections.Youtube.fetch();
-            }
             Alloy.Collections.Youtube.add(Video);
             Video.save();
         }
-        FillTable();
-        Alloy.Globals.CoverUpdate();
+        if (Alloy.Globals.Load == 1) {
+            debugger;
+            var tempCollection = clone(Alloy.Collections.Youtube);
+            tempCollection.fetch();
+        }
+        FillTable(tempCollection);
+        Alloy.Globals.CoverUpdate(tempCollection);
     }
-    function FillTable() {
+    function FillTable(tempCollection) {
+        tempCollection == null && (tempCollection = Alloy.Collections.Youtube);
         debugger;
         var TableRows = [];
-        for (var x in Alloy.Collections.Youtube.models) {
+        for (var x in tempCollection.models) {
             var arg = {
-                Model: Alloy.Collections.Youtube.models[x].attributes,
+                Model: tempCollection.models[x].attributes,
                 Window: $.WinMain
             }, Row = Alloy.createController("NiceRow", arg).getView();
             TableRows.push(Row);
@@ -83,6 +85,13 @@ function Controller() {
     Alloy.Globals.GlobalLoad = function(LocSearch) {
         SearchStart(LocSearch);
     };
+    var clone = function() {
+        function Clone() {}
+        return function(obj) {
+            Clone.prototype = obj;
+            return new Clone;
+        };
+    }();
     _.extend($, exports);
 }
 

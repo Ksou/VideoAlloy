@@ -1,9 +1,10 @@
 function Controller() {
-    function CoverUpdate() {
+    function CoverUpdate(tempCollection) {
+        tempCollection == null && (tempCollection = Alloy.Collections.Youtube);
         var Images = [], VidIDs = [], MaxImages = 10;
-        Alloy.Collections.Youtube.length < 10 && (MaxImages = Alloy.Collections.Youtube.length);
+        tempCollection.length < 10 && (MaxImages = tempCollection.length);
         for (var x = 0; x < MaxImages; x++) {
-            var ImageM = Alloy.Collections.Youtube.models[x].attributes.HQimage || Alloy.Collections.Youtube.models[x].attributes.ImageURL, VidID = Alloy.Collections.Youtube.models[x].attributes.VidID;
+            var ImageM = tempCollection.models[x].attributes.HQimage || tempCollection.models[x].attributes.ImageURL, VidID = tempCollection.models[x].attributes.VidID;
             Images.push(ImageM);
             VidIDs.push(VidID);
         }

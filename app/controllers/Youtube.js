@@ -56,15 +56,7 @@ function ModelStore(dat) {
 		Ti.API.log(Video.get('Name'));
 		// run sometype of compare to filter out duplicates when adding
 		// if we want to load our last searches  
-		if (Alloy.Globals.Load == true) {
-			// I ran into an Alloy Compiler bug here 
-			// if(Alloy.Globals.Load) would run even if Alloy.Globals.Load = false
-				
-				
-			
-		debugger ; 
-		Alloy.Collections.Youtube.fetch() ; 
-	}
+
 		
 		
 		Alloy.Collections.Youtube.add(Video);
@@ -72,20 +64,42 @@ function ModelStore(dat) {
 		Video.save();
 	}
 
-	FillTable();
-	Alloy.Globals.CoverUpdate();
+		if (Alloy.Globals.Load == true) {
+			// I ran into an Alloy Compiler bug here 
+			// if(Alloy.Globals.Load) would run even if Alloy.Globals.Load = false
+				
+				
+	
+		debugger ; 
+	var tempCollection =	  clone(Alloy.Collections.Youtube) ; 
+	tempCollection.fetch() ;
+			// lets clone this so we can keep our orignal collection
+	//var 
+	}
+	FillTable(tempCollection);
+	Alloy.Globals.CoverUpdate(tempCollection);
 	// once thats done , go ahead and  run a function that basically takes out models and makes a nice row for each of them
 
 }
+var clone = (function(){ 
+	// found this on stack , the built in backbone collection.clone function does not work !
+  return function (obj) { Clone.prototype=obj; return new Clone() };
+  function Clone(){}
+}());
 
-function FillTable() {
+
+function FillTable(tempCollection) {
 	// pull the data from the collection , use it to make nice rows
+	if(tempCollection == null){
+	tempCollection = Alloy.Collections.Youtube ; 
+		
+	}
 	debugger ; 
 	var TableRows = [];
 	
-	for (var x in Alloy.Collections.Youtube.models) {
+	for (var x in tempCollection.models) {
 		var arg = {
-			Model : Alloy.Collections.Youtube.models[x].attributes,
+			Model : tempCollection.models[x].attributes,
 			Window : $.WinMain
 		};
 		//debugger ;
